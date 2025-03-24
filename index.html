@@ -3,14 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to My Website</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Starry Night</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.8;
+      animation: twinkle 5s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.2; }
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(to left, white, transparent);
+      opacity: 0;
+      transform: rotate(45deg);
+      animation: shoot 0.25s linear forwards;
+    }
+
+    @keyframes shoot {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(500px, 500px) rotate(45deg);
+      }
+    }
+    .moon {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #f5f3ce 60%, #ccc);
+      border-radius: 50%;
+      box-shadow: 0 0 20px 10px #f5f3ce;
+      z-index: 2;
+    }
+    
+    
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to My Website</h1>
-    <p>just a space dork who needed a website. to you its pointless but to be it has use.</p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const count = Math.max(500, 250);
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+
+      const brightness = Math.random();
+      const color = brightness > 0.66 ? '#ffffff'
+                  : brightness > 0.33 ? '#ddddff'
+                  : '#aaaaff';
+
+      star.style.background = color;
+      star.style.opacity = (brightness * 0.5 + 0.5).toFixed(2);
+      star.style.animationDuration = (Math.random() * 5 + 5).toFixed(1) + 's';
+      document.body.appendChild(star);
+    }
+
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.className = 'shooting-star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 2000);
+    }
     
-  </div>
+      setInterval(() => {
+    if (Math.random() < 0.5) createShootingStar();
+  }, 3000);
+});
+
+  </script>
+    <div class="moon"></div>
+  <script>
+     
+    </script>
+  
+
+  
+  <div class="moon"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const moon = document.querySelector('.moon');
+      const phase = Math.floor(Math.random() * 8);
+      const shadow = document.createElement('div');
+      shadow.style.position = 'absolute';
+      shadow.style.width = '100%';
+      shadow.style.height = '100%';
+      shadow.style.borderRadius = '50%';
+      shadow.style.background = '#1b2735';
+
+      switch (phase) {
+        case 0: // New Moon
+          moon.style.opacity = '0.1';
+          break;
+        case 1: // Waxing Crescent
+          shadow.style.transform = 'translateX(35%)';
+          moon.appendChild(shadow);
+          break;
+        case 2: // First Quarter
+          shadow.style.transform = 'translateX(50%)';
+          moon.appendChild(shadow);
+          break;
+        case 3: // Waxing Gibbous
+          shadow.style.transform = 'translateX(65%)';
+          moon.appendChild(shadow);
+          break;
+        case 4: // Full Moon
+          moon.style.opacity = '1';
+          break;
+        case 5: // Waning Gibbous
+          shadow.style.transform = 'translateX(-65%)';
+          moon.appendChild(shadow);
+          break;
+        case 6: // Last Quarter
+          shadow.style.transform = 'translateX(-50%)';
+          moon.appendChild(shadow);
+          break;
+        case 7: // Waning Crescent
+          shadow.style.transform = 'translateX(-35%)';
+          moon.appendChild(shadow);
+          break;
+      }
+    });
+  </script>
 </body>
 </html>
