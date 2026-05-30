@@ -1,47 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Contact</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Praxidike</title>
   <meta name="description" content="Contact praxidike about domain purchase, transfer, and small business website cleanup.">
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
       min-height: 100vh;
+      overflow-x: hidden;
+      color: white;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #f8f5ff;
-      background:
-        radial-gradient(circle at top left, rgba(103, 232, 249, 0.22), transparent 32%),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.25), transparent 32%),
-        radial-gradient(circle at bottom, rgba(244, 114, 182, 0.18), transparent 35%),
-        #060816;
-      padding: 24px;
+    }
+
+    .star {
+      position: fixed;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.8;
+      animation: twinkle 5s infinite ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.2; }
+    }
+
+    .shooting-star {
+      position: fixed;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(to left, white, transparent);
+      opacity: 0;
+      transform: rotate(45deg);
+      animation: shoot 0.25s linear forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes shoot {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(45deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(500px, 500px) rotate(45deg);
+      }
+    }
+
+    .credit {
+      color: white;
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-family: sans-serif;
+      font-size: 14px;
+      text-decoration: none;
+      z-index: 10;
+      opacity: 0.85;
+    }
+
+    .moon {
+      position: fixed;
+      top: 10%;
+      right: 10%;
+      height: 100px;
+      width: 100px;
+      z-index: 3;
+      filter: drop-shadow(0 0 18px rgba(255,255,255,0.18));
     }
 
     .page {
-      width: min(880px, 100%);
-      min-height: calc(100vh - 48px);
+      position: relative;
+      z-index: 5;
+      width: min(880px, calc(100% - 28px));
+      min-height: 100vh;
       margin: 0 auto;
       display: grid;
       place-items: center;
+      padding: 42px 0;
     }
 
     .panel {
       width: 100%;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.045));
-      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(9, 10, 15, 0.72);
+      border-radius: 28px;
       padding: clamp(28px, 5vw, 54px);
-      box-shadow: 0 30px 90px rgba(0,0,0,0.42);
-      backdrop-filter: blur(18px);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
     }
 
     .eyebrow {
-      color: #67e8f9;
+      color: #ddddff;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-size: 0.78rem;
@@ -57,7 +121,7 @@
     }
 
     .gradient {
-      background: linear-gradient(90deg, #ffffff, #c4b5fd, #67e8f9, #f9a8d4);
+      background: linear-gradient(90deg, #ffffff, #ddddff, #aaaaff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -65,17 +129,17 @@
 
     .domain {
       margin-top: 22px;
-      color: #67e8f9;
+      color: #ddddff;
       font-size: clamp(1.45rem, 4vw, 2.6rem);
       font-weight: 900;
       letter-spacing: -0.05em;
       word-break: break-word;
-      text-shadow: 0 0 36px rgba(103,232,249,0.3);
+      text-shadow: 0 0 28px rgba(221,221,255,0.32);
     }
 
     .lead {
       margin: 24px 0 0;
-      color: #cbc4dd;
+      color: rgba(255,255,255,0.78);
       font-size: 1.1rem;
       line-height: 1.7;
       max-width: 62ch;
@@ -84,21 +148,21 @@
     .contact-box {
       margin-top: 24px;
       padding: 18px;
-      border-radius: 20px;
-      background: rgba(103,232,249,0.08);
-      border: 1px solid rgba(103,232,249,0.22);
-      color: #cbc4dd;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.78);
       line-height: 1.55;
     }
 
     .contact-box strong {
       display: block;
-      color: #ffffff;
+      color: white;
       margin-bottom: 8px;
     }
 
     .contact-box a {
-      color: #67e8f9;
+      color: #ddddff;
       text-decoration: none;
       font-weight: 850;
       word-break: break-word;
@@ -112,71 +176,114 @@
 
     .card {
       padding: 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
     .card strong {
       display: block;
-      color: #ffffff;
+      color: white;
       margin-bottom: 6px;
     }
 
     .card p {
       margin: 0;
-      color: #b8b2cf;
+      color: rgba(255,255,255,0.72);
       line-height: 1.5;
     }
 
     .back {
       display: inline-flex;
       margin-top: 22px;
-      color: #b8b2cf;
+      color: rgba(255,255,255,0.74);
       text-decoration: none;
       font-weight: 800;
     }
 
+    .back:hover,
+    .contact-box a:hover {
+      color: white;
+    }
+
     footer {
       margin-top: 24px;
-      color: #9188a8;
+      color: rgba(255,255,255,0.56);
       font-size: 0.9rem;
       text-align: center;
     }
 
     @media (max-width: 620px) {
-      body { padding: 14px; }
-      .page { min-height: calc(100vh - 28px); }
-      .panel { border-radius: 26px; }
+      .page {
+        width: min(100% - 24px, 880px);
+        padding: 24px 0 52px;
+      }
+
+      .panel {
+        border-radius: 22px;
+      }
+
+      .moon {
+        top: 18px;
+        right: 18px;
+        width: 72px;
+        height: 72px;
+        opacity: 0.72;
+      }
+
+      .credit {
+        position: relative;
+        display: inline-block;
+        left: auto;
+        bottom: auto;
+        margin: 0 0 12px 0;
+      }
     }
   </style>
 </head>
 
 <body>
+  <a class="credit" href="https://github.com/AsterPraxidike" target="_blank" rel="noopener noreferrer">
+    Made by Aster-praxidike
+  </a>
+
+  <div class="moon">
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <defs>
+        <pattern id="image11" x="0" y="0" patternUnits="userSpaceOnUse" height="100" width="100">
+          <image x="0" y="0" height="100" width="100" href="https://www.icalendar37.net/lunar/api/i.png" />
+        </pattern>
+      </defs>
+      <g>
+        <circle cx="50" cy="50" r="49" stroke="none" fill="rgb(17,17,17)"></circle>
+        <path d="M 50 1 A 49,49 0 1,0 49,99 A 12.74,49 0 0,1 50,1" stroke-width="0" stroke="none" fill="rgb(245,245,245)"></path>
+        <a href="https://www.icalendar37.net/lunar/app/" rel="noopener noreferrer" target="_blank">
+          <circle cx="50" cy="50" r="49" style="pointer-events:all;cursor:pointer" stroke-width="0" fill="url(#image11)"></circle>
+        </a>
+      </g>
+    </svg>
+  </div>
+
   <main class="page">
     <div>
       <section class="panel">
-        <div class="eyebrow"></div>
+        
 
         <h1>
-          CONTACT <span class="gradient">PRAXIDIKE</span>
+          Contact <span class="gradient">Praxidike</span>
         </h1>
 
-        
 
         <p class="lead">
           Use this page to ask about buying a domain, transferring it, or getting help
           cleaning up a confusing small-business website setup.
         </p>
 
-        <div class="contact-box">
-          <strong>Contact: praxidike</strong>
-          Email: <a id="emailLink" href="mailto:contact@praxidike.space">contact@praxidike.space</a>
-        </div>
+
 
         <div class="cards">
           <div class="card">
-            <strong>Buying a domain</strong>
+            <strong>Buying a domain or website</strong>
             <p>Send an offer, ask about availability, or request transfer details.</p>
           </div>
 
@@ -189,29 +296,75 @@
             <strong>Plain-English help</strong>
             <p>No corporate maze. Just describe what you own, what is broken, and what you want fixed.</p>
           </div>
+          
+                  <div class="contact-box">
+          <strong>Contact: Praxidike</strong>
+          Email: <a id="emailLink" href="mailto:contact@praxidike.space">contact@praxidike.space</a>
+        </div>
         </div>
 
         <a class="back" href="https://praxidike.space/">← Back to praxidike.space</a>
       </section>
 
-      <footer id="footerText">
-        Contact page.
+      <footer id="footerText" aria-hidden="true">
+        &nbsp;
       </footer>
     </div>
   </main>
 
   <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const count = Math.max(500, 250);
+
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+
+      const brightness = Math.random();
+      const color = brightness > 0.66 ? '#ffffff'
+                  : brightness > 0.33 ? '#ddddff'
+                  : '#aaaaff';
+
+      star.style.background = color;
+      star.style.opacity = (brightness * 0.5 + 0.5).toFixed(2);
+      star.style.animationDuration = (Math.random() * 5 + 5).toFixed(1) + 's';
+
+      document.body.appendChild(star);
+    }
+
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.className = 'shooting-star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 2000);
+    }
+
+    setInterval(() => {
+      if (Math.random() < 0.5) createShootingStar();
+    }, 3000);
+
     const contactEmail = "contact@praxidike.space";
     const params = new URLSearchParams(window.location.search);
-    const domain = params.get("domain") || "this domain";
+    const domain = params.get("domain");
 
-    document.title = "Contact praxidike about " + domain;
-    document.getElementById("domainName").textContent = domain;
-    document.getElementById("footerText").textContent = "Contact praxidike about " + domain + ".";
+    document.title = "Contact Praxidike";
+    document.getElementById("footerText").innerHTML = "&nbsp;";
+
+    const subject = domain
+      ? "Contact request for " + domain
+      : "Contact request";
 
     document.getElementById("emailLink").href =
       "mailto:" + contactEmail +
-      "?subject=" + encodeURIComponent("Contact request for " + domain);
-  </script>
+      "?subject=" + encodeURIComponent(subject);
+  });
+</script>
 </body>
 </html>
